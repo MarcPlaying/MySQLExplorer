@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\herpe\\source\\repos\\MySQLE\\MySQLE\\MySQLE.csproj": {}
+    "C:\\Users\\herpe\\Desktop\\MySQLExplorer\\MySQLE\\MySQLE.csproj": {}
   },
   "projects": {
-    "C:\\Users\\herpe\\source\\repos\\MySQLE\\MySQLE\\MySQLE.csproj": {
+    "C:\\Users\\herpe\\Desktop\\MySQLExplorer\\MySQLE\\MySQLE.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\herpe\\source\\repos\\MySQLE\\MySQLE\\MySQLE.csproj",
+        "projectUniqueName": "C:\\Users\\herpe\\Desktop\\MySQLExplorer\\MySQLE\\MySQLE.csproj",
         "projectName": "MySQLE",
-        "projectPath": "C:\\Users\\herpe\\source\\repos\\MySQLE\\MySQLE\\MySQLE.csproj",
+        "projectPath": "C:\\Users\\herpe\\Desktop\\MySQLExplorer\\MySQLE\\MySQLE.csproj",
         "packagesPath": "C:\\Users\\herpe\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\herpe\\source\\repos\\MySQLE\\MySQLE\\obj\\",
+        "outputPath": "C:\\Users\\herpe\\Desktop\\MySQLExplorer\\MySQLE\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\herpe\\AppData\\Roaming\\NuGet\\NuGet.Config",

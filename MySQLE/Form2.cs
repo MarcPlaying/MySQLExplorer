@@ -15,8 +15,11 @@ namespace MySQLE
     {
         public MySqlConnection sqlConn;
         public MySqlDataAdapter sqlDA;
-        public Form2(MySqlConnection sqlConn, string databaseName)
+        public Form1 formOne;
+
+        public Form2(MySqlConnection sqlConn, string databaseName, Form1 form)
         {
+            this.formOne = form;
             this.sqlConn = sqlConn;
             InitializeComponent();
             this.Text = "MySQLExplorer: Connected on " + databaseName;
@@ -72,6 +75,12 @@ namespace MySQLE
                 sqlDA.Update(changes);
                 ((DataTable)dataGridView1.DataSource).AcceptChanges();
             }
+        }
+
+        private void Form2_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            formOne.Show();
+            this.Hide();
         }
     }
 
