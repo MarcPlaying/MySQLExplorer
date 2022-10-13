@@ -53,10 +53,9 @@ namespace MySQLE
                 DialogResult dialogResult = MessageBox.Show("Do you want to save this session? NOTE: Saving is not secure", "Save session?", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    string pw = "EADASDJLH";
                     string newpw = StringCipher.Encrypt(password.Text);
                     string conString = server.Text + ";" + database.Text + ";" + username.Text + ";" + newpw;
-                    File.WriteAllText("MySQLE_Files\\"+server.Text+".sess", conString);
+                    File.WriteAllText("MySQLE_Files\\"+database.Text+".sess", conString);
                 }
             }
             else
@@ -73,7 +72,7 @@ namespace MySQLE
             {
                 
                 string[] connectSplit = connectS.Split('@');
-                string session = connectSplit[1] + ".sess";
+                string session = connectSplit[0] + ".sess";
                 string[] sessionString = File.ReadAllText("MySQLE_Files\\" + session).Split(";");
                 if (connect(sessionString[0], sessionString[1], sessionString[2], StringCipher.Decrypt(sessionString[3])) == true)
                 {

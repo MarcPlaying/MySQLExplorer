@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "w/gyBvDlVUxLBTjWXwsySaCLt6bwQPcrSWJgHnlrub6U3SR1KSFtuY6MwVmSc1TeW/EVsLwCtHJt0GtLgiKmXg==",
+  "dgSpecHash": "pMP7SvZcCL0tqbdas3LH5P/yYcHrVtS50VC8Dp8UTLzzz/FIbswkqTiMUB1Lp9MdQpFWX6rHij9c/MEDtmB57w==",
   "success": true,
   "projectFilePath": "C:\\Users\\herpe\\Desktop\\MySQLExplorer\\MySQLE\\MySQLE.csproj",
   "expectedPackageFiles": [
@@ -11,6 +11,7 @@
     "C:\\Users\\herpe\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\herpe\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Users\\herpe\\.nuget\\packages\\mysql.data\\8.0.30\\mysql.data.8.0.30.nupkg.sha512",
+    "C:\\Users\\herpe\\.nuget\\packages\\mysqlbackup.net\\2.3.6.1\\mysqlbackup.net.2.3.6.1.nupkg.sha512",
     "C:\\Users\\herpe\\.nuget\\packages\\portable.bouncycastle\\1.9.0\\portable.bouncycastle.1.9.0.nupkg.sha512",
     "C:\\Users\\herpe\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
     "C:\\Users\\herpe\\.nuget\\packages\\system.configuration.configurationmanager\\4.4.1\\system.configuration.configurationmanager.4.4.1.nupkg.sha512",

@@ -43,6 +43,10 @@
             "MySql.Data": {
               "target": "Package",
               "version": "[8.0.30, )"
+            },
+            "MySqlBackup.NET": {
+              "target": "Package",
+              "version": "[2.3.6.1, )"
             }
           },
           "imports": [

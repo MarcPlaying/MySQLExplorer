@@ -98,6 +98,25 @@
           "lib/net6.0/ZstdNet.dll": {}
         }
       },
+      "MySqlBackup.NET/2.3.6.1": {
+        "type": "package",
+        "dependencies": {
+          "MySql.Data": "8.0.27"
+        },
+        "compile": {
+          "lib/net5.0/MySqlBackup.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/MySqlBackup.dll": {}
+        },
+        "contentFiles": {
+          "contentFiles/any/net5.0/logo.ico": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          }
+        }
+      },
       "Portable.BouncyCastle/1.9.0": {
         "type": "package",
         "compile": {
@@ -435,6 +454,30 @@
         "lib/netstandard2.1/ZstdNet.dll",
         "mysql.data.8.0.30.nupkg.sha512",
         "mysql.data.nuspec"
+      ]
+    },
+    "MySqlBackup.NET/2.3.6.1": {
+      "sha512": "udnH5IHghC1hQU3Sid0DySyl1CzgMnP2ZIkHOzXwUKEeo1gV4x5AeK+UtydvqYjSvck88ENvE53/BxCB0mV7fg==",
+      "type": "package",
+      "path": "mysqlbackup.net/2.3.6.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "content/logo.ico",
+        "contentFiles/any/net452/logo.ico",
+        "contentFiles/any/net48/logo.ico",
+        "contentFiles/any/net5.0/logo.ico",
+        "contentFiles/any/netstandard2.0/logo.ico",
+        "contentFiles/any/netstandard2.1/logo.ico",
+        "lib/net452/MySqlBackup.dll",
+        "lib/net48/MySqlBackup.dll",
+        "lib/net5.0/MySqlBackup.dll",
+        "lib/netstandard2.0/MySqlBackup.dll",
+        "lib/netstandard2.1/MySqlBackup.dll",
+        "logo128.png",
+        "mysqlbackup.net.2.3.6.1.nupkg.sha512",
+        "mysqlbackup.net.nuspec"
       ]
     },
     "Portable.BouncyCastle/1.9.0": {
@@ -838,7 +881,8 @@
   },
   "projectFileDependencyGroups": {
     "net6.0-windows7.0": [
-      "MySql.Data >= 8.0.30"
+      "MySql.Data >= 8.0.30",
+      "MySqlBackup.NET >= 2.3.6.1"
     ]
   },
   "packageFolders": {
@@ -883,6 +927,10 @@
           "MySql.Data": {
             "target": "Package",
             "version": "[8.0.30, )"
+          },
+          "MySqlBackup.NET": {
+            "target": "Package",
+            "version": "[2.3.6.1, )"
           }
         },
         "imports": [
