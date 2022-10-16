@@ -47,7 +47,7 @@ namespace MySQLE
         {
             if (connect(server.Text, database.Text, username.Text, password.Text) == true)
             {
-                Form2 databaseView = new Form2(sqlCon, database.Text,this);
+                dataViewForm databaseView = new dataViewForm(sqlCon, database.Text,this);
                 databaseView.Show();
                 this.Hide();
                 DialogResult dialogResult = MessageBox.Show("Do you want to save this session? NOTE: Saving is not secure", "Save session?", MessageBoxButtons.YesNo);
@@ -76,7 +76,7 @@ namespace MySQLE
                 string[] sessionString = File.ReadAllText("MySQLE_Files\\" + session).Split(";");
                 if (connect(sessionString[0], sessionString[1], sessionString[2], StringCipher.Decrypt(sessionString[3])) == true)
                 {
-                    Form2 databaseView = new Form2(sqlCon, sessionString[1],this);
+                    dataViewForm databaseView = new dataViewForm(sqlCon, sessionString[1],this);
                     databaseView.Show();
                     this.Hide();
                 }

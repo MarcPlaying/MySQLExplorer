@@ -11,19 +11,19 @@ using System.Windows.Forms;
 
 namespace MySQLE
 {
-    public partial class Form2 : Form
+    public partial class dataViewForm : Form
     {
         public MySqlConnection sqlConn;
         public MySqlDataAdapter sqlDA = new MySqlDataAdapter();
         public Form1 formOne;
 
-        public Form2(MySqlConnection sqlConn, string databaseName, Form1 form)
+        public dataViewForm(MySqlConnection sqlConn, string databaseName, Form1 form)
         {
             this.formOne = form;
             this.sqlConn = sqlConn;
             InitializeComponent();
             this.Text = "MySQLExplorer: Connected on " + databaseName;
-            databaseView.ImageList = imageList1;
+            databaseView.ImageList = tableIconList;
             
             TreeNode node = new TreeNode();
             node.Text = databaseName;
@@ -69,8 +69,8 @@ namespace MySQLE
                 sqlDA = new MySqlDataAdapter("select * from " + e.Node.Text, sqlConn);
                 DataSet DS = new DataSet();
                 sqlDA.Fill(DS);
-                dataGridView1.DefaultCellStyle.Font = new Font("Calibri", 8, FontStyle.Regular);
-                dataGridView1.DataSource = DS.Tables[0];
+                tableView.DefaultCellStyle.Font = new Font("Calibri", 8, FontStyle.Regular);
+                tableView.DataSource = DS.Tables[0];
             }
             catch(Exception)
             {
@@ -78,20 +78,20 @@ namespace MySQLE
             }
         }
 
-        private void dataGridView1_RowValidated(object sender, DataGridViewCellEventArgs e)
+        private void tableView_RowValidated(object sender, DataGridViewCellEventArgs e)
         {
-            DataTable changes = ((DataTable)dataGridView1.DataSource).GetChanges();
+            DataTable changes = ((DataTable)tableView.DataSource).GetChanges();
 
             if (changes != null)
             {
                 MySqlCommandBuilder mcb = new MySqlCommandBuilder(sqlDA);
                 sqlDA.UpdateCommand = mcb.GetUpdateCommand();
                 sqlDA.Update(changes);
-                ((DataTable)dataGridView1.DataSource).AcceptChanges();
+                ((DataTable)tableView.DataSource).AcceptChanges();
             }
         }
 
-        private void Form2_FormClosing(object sender, FormClosingEventArgs e)
+        private void dataViewForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             sqlConn.Close();
             sqlDA.Dispose();
@@ -99,71 +99,22 @@ namespace MySQLE
             this.Hide();
         }
 
-        private void d(object sender, EventArgs e)
+        private void printMenu_Click(object sender, EventArgs e)
         {
-
+            printDocument.Print();
         }
 
-        private void dsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void printToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            printDocument1.Print();
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        private void printDocument_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
             if(e.Graphics != null) { 
-                Bitmap bm = new Bitmap(this.dataGridView1.Width, this.dataGridView1.Height);
-                dataGridView1.DrawToBitmap(bm, new Rectangle(0, 0, this.dataGridView1.Width, this.dataGridView1.Height));
+                Bitmap bm = new Bitmap(this.tableView.Width, this.tableView.Height);
+                tableView.DrawToBitmap(bm, new Rectangle(0, 0, this.tableView.Width, this.tableView.Height));
                 e.Graphics.DrawImage(bm, 0, 0);
                 
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            float fontSize = dataGridView1.DefaultCellStyle.Font.Size;
-            dataGridView1.DefaultCellStyle.Font = new Font("Calibri", fontSize + 1, FontStyle.Regular);
-            foreach(DataGridViewRow row in dataGridView1.Rows)
-            {
-                row.Height = row.Height + 3;
-            }
-            foreach(DataGridViewColumn coll in dataGridView1.Columns)
-            {
-                coll.Width = coll.Width + 3;
-            }
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            float fontSize = dataGridView1.DefaultCellStyle.Font.Size;
-            if (fontSize == 1) return;
-            dataGridView1.DefaultCellStyle.Font = new Font("Calibri", fontSize - 1, FontStyle.Regular);
-            foreach (DataGridViewRow row in dataGridView1.Rows)
-            {
-                row.Height = row.Height - 3;
-            }
-            foreach (DataGridViewColumn coll in dataGridView1.Columns)
-            {
-                coll.Width = coll.Width - 3;
-            }
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void sqlToolStripMenuItem_Click(object sender, EventArgs e)
+        private void sqlExportMenu_Click(object sender, EventArgs e)
         {
             sqlSaveDialog.Filter = "SQL File|*.sql|All Files|*.*";
             sqlSaveDialog.Title = "Backup your Database";
@@ -182,6 +133,32 @@ namespace MySQLE
                
             
         }
+
+        private void zoomInMenu_Click(object sender, EventArgs e)
+        {
+            zoomTable(3);
+        }
+
+        private void zoomOutMenu_Click(object sender, EventArgs e)
+        {
+            zoomTable(-3);
+        }
+
+        public void zoomTable(int zoom)
+        {
+            float fontSize = tableView.DefaultCellStyle.Font.Size;
+            if (fontSize == 1 && zoom < 0) return;
+            tableView.DefaultCellStyle.Font = new Font("Calibri", fontSize + (zoom/3), FontStyle.Regular);
+            foreach (DataGridViewRow row in tableView.Rows)
+            {
+                row.Height = row.Height +zoom;
+            }
+            foreach (DataGridViewColumn coll in tableView.Columns)
+            {
+                coll.Width = coll.Width +zoom;
+            }
+        }
+
     }
 
 }
